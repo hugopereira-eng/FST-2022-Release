@@ -1,0 +1,15 @@
+map_frame_id: "map"
+particle_count: 50
+delete_cones_when_left_fov: false
+associate_same_color_only: true
+observation_increment: 1
+particle_resample_factor: 0.5
+loop_closure_particle_factor: 0.3
+cone_radius: 0.0
+load_track: false
+map_location: "~/"
+load_track_name: "autocross"
+motion_std_dev_x: 0.1
+motion_std_dev_y: 0.05
+motion_std_dev_theta: 0.02
+thread_count: 1

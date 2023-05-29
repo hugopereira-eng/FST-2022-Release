@@ -1,0 +1,14 @@
+# /etc/systemd/system/phc2shm.service
+[Unit]
+Description=Synchronize PHC to NTP SHM for lidar
+Documentation=man:phc2sys
+After=ntpdate.service
+Requires=ptp4l.service
+After=ptp4l.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/phc2sys -s eno1 -E ntpshm -w -O 0
+
+[Install]
+WantedBy=multi-user.target

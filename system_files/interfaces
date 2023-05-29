@@ -1,0 +1,40 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+auto can0
+iface can0 inet manual
+	#pre-up ip link set $IFACE type can bitrate 1000000 
+	pre-up /sbin/ip link set $IFACE type can bitrate 1000000 restart-ms 1
+	up /sbin/ifconfig $IFACE up
+	down /sbin/ifconfig $IFACE down
+
+auto can1
+iface can1 inet manual
+	#pre-up ip link set $IFACE type can bitrate 1000000 
+	pre-up /sbin/ip link set $IFACE type can bitrate 1000000 restart-ms 1
+	up /sbin/ifconfig $IFACE up
+	down /sbin/ifconfig $IFACE down
+
+auto can2
+iface can2 inet manual
+	#pre-up ip link set $IFACE type can bitrate 1000000 
+	pre-up /sbin/ip link set $IFACE type can bitrate 1000000 restart-ms 1
+	up /sbin/ifconfig $IFACE up
+	down /sbin/ifconfig $IFACE down
+
+# Interface to bind for use with the OS1 lidar
+auto eno1
+iface eno1 inet static
+address 10.5.5.1
+netmask 255.255.255.0
+
+#Lucid Camera
+auto enp6s0
+iface enp6s0 inet static
+address 169.254.101.0
+netmask 255.255.0.0
+post-up /sbin/ethtool -G enp6s0 rx 4096
+post-up /sbin/ethtool -G enp6s0 tx 4096
+mtu 9000
+

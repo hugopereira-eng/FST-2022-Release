@@ -1,0 +1,3 @@
+<launch>
+    <node name="big_brother" pkg="big_brother" type="big_brother.py" output="screen" respawn="true" respawn_delay="1"/>
+</launch>

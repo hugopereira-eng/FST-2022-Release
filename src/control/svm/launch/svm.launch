@@ -1,0 +1,5 @@
+<launch>
+    <node name="svm" pkg="svm" type="svm" output="screen" respawn="true" respawn_delay="1">
+        <rosparam command="load" file="$(find svm)/config/svm.yaml"/>
+    </node>
+</launch>

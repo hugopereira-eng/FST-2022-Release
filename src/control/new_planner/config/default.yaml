@@ -1,0 +1,6 @@
+particle_count:               50  # []    particles per iteration
+distribution_angle:           7   # [deg] new particles sampled within a polar region (FoV)
+distribution_radius:          1   # [m]   new particles sampled 1m from current position
+search_region:
+  radius:                     8   # [m]   radius search region to search for close cones                    
+step_count:                   10  # []    stopping condition

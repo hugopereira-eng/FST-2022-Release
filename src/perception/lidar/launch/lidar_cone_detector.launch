@@ -1,0 +1,5 @@
+<launch>
+    <node name="lidar_cone_detector" pkg="lidar" type="cone_detector" output="screen" respawn="true" respawn_delay="1">
+    	<rosparam command="load" file="$(find lidar)/config/cone_detector.yaml"/>
+    </node>
+</launch>

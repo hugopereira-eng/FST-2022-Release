@@ -1,0 +1,71 @@
+#FST10D car parameters
+
+
+#    fl      track   fr
+#  (a,w_2)0--------0(a,-w_2)
+#              | a
+#              | 
+#              | CG (0,0)
+#              | 
+#        rl    | b    rr
+# (-b,w_2)0--------0(-b,-w_2)
+
+
+car:
+
+  inertia:
+    m: 246.0  #Car Weight [kg]
+    g: 9.81   #Gravity force
+    Iz: 150  #Inertial force I_zz
+
+  kinematics:
+    track: 1.2
+    a: 0.730
+    b: 0.810 
+
+  engine:
+    gr: 16.25   #gear ratio
+
+  #Hoosier R25B
+  tire:
+    # sigma: [911.2273, 429.4989,
+    #         0.      ,       0.,
+    #         0.      ,       0.]
+
+    sigma_00: 911.2273
+    sigma_01: 429.4989
+    sigma_10: 0.0
+    sigma_21: 0.0
+    sigma_20: 0.0
+    sigma_21: 0.0
+
+    J_f: 4    #front
+    J_r: 10   #rear
+
+    # mu_k: [0.1500, 0
+    #       0,      0.1201]
+
+    mu_k_00: 0.1500
+    mu_k_01: 0.
+    mu_k_10: 0.
+    mu_k_11: 0.1201
+
+    # mu_s: [2.6564, 0
+    #       0,      2.6564]
+    
+    mu_s_00: 2.6564
+    mu_s_01: 0.0
+    mu_s_10: 0.0
+    mu_s_11: 2.6564
+
+    gamma: 4.9299
+    vs: 10
+    kx: 1.4
+    ky: 1.4
+    kz: 96865
+    r: 0.2286
+
+  gps:
+
+    coord_x: 0.6 #coordinates of gps(ahrs) in the car
+    coord_y: 0

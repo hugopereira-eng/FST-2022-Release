@@ -1,0 +1,12 @@
+controller:
+  accelerating_k: 0.03
+  breaking_k: 0.06
+  steering_k: 1
+
+look_ahead_time: 0.7
+min_lookahead_distance: 5
+speed_ref: 5
+min_speed: 5
+min_steering: -26500.0
+max_steering: 26500.0
+max_steering_change: 0.8

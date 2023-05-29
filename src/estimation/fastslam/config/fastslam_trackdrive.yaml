@@ -1,0 +1,15 @@
+map_frame_id: "map"
+particle_count: 100
+delete_cones_when_left_fov: false
+associate_same_color_only: true
+observation_increment: 5
+particle_resample_factor: 0.5
+loop_closure_particle_factor: 0.3
+cone_radius: 0.0
+load_track: false
+map_location: "~/"
+load_track_name: "trackdrive"
+motion_std_dev_x: 0.02
+motion_std_dev_y: 0.02
+motion_std_dev_theta: 0.1
+thread_count: 4

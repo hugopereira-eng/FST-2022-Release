@@ -1,0 +1,15 @@
+cost_function_Kwidth: 1.0
+cost_function_Kdistance: 1.0
+cost_function_Kangle: 10.0
+cost_function_Kdistance_total: 1.0
+cost_function_coneColor: 2000
+cost_function_coneNoColor: 2500
+cost_function_wrongSide: 3000
+
+cost_adm_max_width: 6.1
+cost_adm_min_width: 3.5
+cost_adm_max_distance: 2.2
+cost_adm_min_distance: 0.35
+cost_adm_angle: 0.5236    # (PI/6)
+cost_adm_max_distanceTotal: 3.1479
+cost_adm_min_distanceTotal: 0.5996

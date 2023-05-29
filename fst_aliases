@@ -1,0 +1,23 @@
+ 
+#!/bin/bash
+
+FST_ROOT=$( cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
+
+alias FST_source="source ${FST_ROOT}/fst_environment.sh"
+alias FST_cd="cd ${FST_ROOT}"
+alias asmake='FST_cd && catkin_make -DCATKIN_BLACKLIST_PACKAGES="arena_camera;ouster_ros"'
+
+# Missions
+alias trackdrive="roslaunch common_meta_pkg trackdrive.launch"
+alias skidpad="roslaunch common_meta_pkg skidpad.launch"
+alias acceleration="roslaunch common_meta_pkg acceleration.launch"
+alias autocross="roslaunch common_meta_pkg autocross.launch"
+
+
+# Simulations Launching
+alias runfssim="roslaunch fst_interface fssim.launch"
+alias strackdrive="roslaunch fst_interface fssim.launch fssim_config:=trackdrive"
+alias sskidpad="roslaunch fst_interface fssim.launch fssim_config:=skidpad"
+alias sacceleration="roslaunch fst_interface fssim.launch fssim_config:=acceleration"
+alias sautocross="roslaunch fst_interface fssim.launch fssim_config:=autocross"
+

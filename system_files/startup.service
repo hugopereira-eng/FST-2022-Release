@@ -1,0 +1,11 @@
+[Unit]
+Description=start roscore
+After=remote-fs.target
+After=syslog.target
+[Service]
+ExecStart=/home/fst10d/startup_scripts/startup.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+

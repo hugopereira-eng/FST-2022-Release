@@ -1,0 +1,7 @@
+[Unit]
+Description=Second instance of phc2sys
+[Service]
+ExecStart=
+ExecStart=/usr/sbin/phc2sys -w -s CLOCK_REALTIME -c enp6s0 -O 0
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+particle_number: 50                 # number of particles 
+observation_increment: 10           # when a landmark is observed increments this value
+resample_factor: 0.5                # threshold below which resample occurs
+loop_closure_particle_factor: 0.1   # percentage of particles that is needed to occurr loop closure
+loop_closure_factor: 0.5            # percentage of the landmarks (missed + seen) that returned
+observation_noise_distance: 0.4     # range uncertainty in meters
+observation_noise_theta: 4        # bearing uncertainty in degrees
+control_noise_x: 0.01               # x uncertainty in meters
+control_noise_y: 0.02               # y uncertainty in meters
+control_noise_theta: 0.03          # yaw uncertainty in degrees
+new_landmark_threshold: 0.02        # probability above which an observation is considered to be known landmark
+starting_heading_deviation: 10.0    # uncertainty associted to the starting heading
+map_name: "trackdrive"

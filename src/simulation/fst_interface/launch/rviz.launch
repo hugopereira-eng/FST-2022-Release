@@ -1,0 +1,5 @@
+<launch>
+     <node name="fssim_rviz" pkg="rviz" type="rviz" args="-d $(find fst_interface)/rviz/fssim.rviz"/>
+     <!-- not handling plots for now -->
+
+</launch>

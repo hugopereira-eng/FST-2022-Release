@@ -1,0 +1,16 @@
+<launch>
+    <arg name="mission_config" default="default"/>
+    <arg name="load_map" default="false"/>
+
+    <node name="fastslam2_0" pkg="fastslam2_0" type="fastslam2_0" output="screen" respawn="true" respawn_delay="3">
+        <param name="load_map" type="bool" value="$(arg load_map)"/>
+        <rosparam command="load" file="$(find fastslam2_0)/config/fastslam2_0_$(arg mission_config).yaml"/>
+        <param name="map_path" type="str" value="$(find fastslam2_0)/maps"/>
+    </node>
+    
+    <include file="$(find svm)/launch/svm_python.launch" unless="$(arg load_map)"/>
+    
+    <group if="$(arg load_map)">
+        <rosparam command="load" file="$(find fastslam2_0)/maps/$(arg mission_config).yaml"/> 
+    </group>
+</launch>

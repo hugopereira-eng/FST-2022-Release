@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+  <param name="common/mission_selected" type="int" value="5"/> <!-- 5 = INSPECTION -->
+  
+  <include file="$(find mission_tracker)/launch/mission_tracker.launch">
+    <arg name="mission_config" value="inspection"/>
+  </include>
+ 
+  <include file="$(find control_meta_pkg)/missions/control_inspection.launch">
+    <arg name="mission_config" value="inspection"/>
+  </include>
+  
+  <include file="$(find fst_interface)/launch/only_interface.launch"/>
+
+</launch>

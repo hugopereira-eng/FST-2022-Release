@@ -1,0 +1,3 @@
+distance_until_mission_finished: 10
+distance_to_orange_cone: 3      #if a orange cone is at maximum at this distance this may count as a lap or mission finished
+acceleration_maximum_distance: 75 #maximum of the distance provided from SLAM to make the car brake

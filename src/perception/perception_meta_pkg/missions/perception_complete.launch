@@ -1,0 +1,7 @@
+<launch>
+    <!-- <include file="$(find lidar)/launch/lidar_color_classification.launch">
+      <arg name="no_colorNet" value="1"/> 0 = Use colorNet, 1 = Don't use colorNet
+      <param name="/perception/no_colorNet" type="int" value="$(arg no_colorNet)"/>
+    </include> -->
+    <include file="$(find lidar)/launch/lidar_cone_detector.launch"/>
+</launch>

@@ -1,0 +1,14 @@
+<!-- Publish tf for visualization -->
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="base_link_broadcaster" args="0 0 0 0 0 0 1 base_footprint base_link 1" />
+    <node pkg="tf" type="static_transform_publisher" name="cog_broadcaster" args="0 0 0.05 0 0 0 1 base_link cog 1" />
+    <node pkg="tf" type="static_transform_publisher" name="chassis_broadcaster" args="0 0 0 0 0 0 1 cog chassis 1" />
+    <node pkg="tf" type="static_transform_publisher" name="left_steering_hinge_broadcaster" args="0.8 0.6 0.228 0 0 0 1 chassis left_steering_hinge 1" />
+    <node pkg="tf" type="static_transform_publisher" name="right_steering_hinge_broadcaster" args="0.8 -0.6 0.228 0 0 0 1 chassis right_steering_hinge 1" />
+    <node pkg="tf" type="static_transform_publisher" name="left_front_wheel_broadcaster" args="0 0 0 0 0 0 1 left_steering_hinge left_front_wheel 1" />
+    <node pkg="tf" type="static_transform_publisher" name="right_front_wheel_broadcaster" args="0 0 0 0 0 0 1 right_steering_hinge right_front_wheel 1" />
+    <node pkg="tf" type="static_transform_publisher" name="left_rear_wheel_broadcaster" args="-0.8 0.6 0.228 0 0 0 1 chassis left_rear_wheel 1" />
+    <node pkg="tf" type="static_transform_publisher" name="right_rear_wheel_broadcaster" args="-0.8 -0.6 0.228 0 0 0 1 chassis right_rear_wheel 1" />
+    <node pkg="tf" type="static_transform_publisher" name="ouster_sensor_broadcaster" args="1.6 0 0.1 0 0 0 1 cog os_sensor 1" />
+    <node pkg="tf" type="static_transform_publisher" name="ahrs_broadcaster" args="0.6 0 0.4 0 0 0 1 cog ahrs_link 1" />
+</launch>

@@ -1,0 +1,9 @@
+[Unit]
+After=NetworkManager.service time-sync.target roscore.service
+[Service]
+Type=simple
+User=fst10d
+Restart=always
+ExecStart=/home/aeroless/software10d/telemetry/server
+[Install]
+WantedBy=multi-user.target

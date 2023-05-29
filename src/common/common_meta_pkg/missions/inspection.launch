@@ -1,0 +1,12 @@
+<launch>
+    <param name="common/mission_selected" type="int" value="5"/> <!-- 5 = INSPECTION -->
+	<include file="$(find mission_tracker)/launch/mission_tracker.launch">
+    	<arg name="mission_config" value="inspection"/>
+  	</include>
+
+	<include file="$(find common_meta_pkg)/missions/tf.launch" /> 
+
+  	<include file="$(find control_meta_pkg)/missions/control_inspection.launch">
+    <arg name="mission_config" value="inspection"/>
+  </include>
+</launch>

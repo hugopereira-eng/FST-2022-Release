@@ -1,0 +1,7 @@
+<launch>
+    <arg name="mission_config" default="default"/> 
+	<rosparam command="load" file="$(find path_planner)/config/path_planner_$(arg mission_config).yaml"/>
+
+    <node name="path_planner" pkg="path_planner" type="path_planner" output="screen" respawn="true" respawn_delay="1">
+    </node>
+</launch>

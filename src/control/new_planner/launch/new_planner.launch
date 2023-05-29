@@ -1,0 +1,5 @@
+<launch>
+    <node name="new_planner" pkg="new_planner" type="new_planner" output="screen">
+        <rosparam command="load" file="$(find new_planner)/config/default.yaml"/>
+    </node>
+</launch>

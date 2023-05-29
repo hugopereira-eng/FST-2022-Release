@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/software10d/autonomous-system/devel/setup.bash
+source /etc/ros/env.sh
+# export ROS_HOME=$(echo ~aeroless)/.ros
+roslaunch pierre pierre.launch &
+pierre_PID=$!
+wait $pierre_PID

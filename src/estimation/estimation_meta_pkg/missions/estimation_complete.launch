@@ -1,0 +1,32 @@
+<launch>
+	<arg name="mission_config" default="default"/> 
+	<arg name="slam_pipeline" default="0"/> <!-- 0 = GraphSlam, 1 = FastSlam2.0, 2 = FastSlam1.0 -->
+	<arg name="load_map" default="false"/>
+	<arg name="simul" default="false"/>
+
+
+	<group if="$(eval arg('simul') == false)">
+		<include file="$(find state_estimation)/launch/state_estimation.launch"/>
+	</group>
+
+	<group if="$(eval arg('slam_pipeline') == 0)">
+		<include file="$(find graphslam)/launch/graphslam.launch">
+			<arg name="mission_config" value="$(arg mission_config)"/> 
+			<arg name="load_map" value="$(arg load_map)"/>
+		</include>
+	</group>
+
+	<group if="$(eval arg('slam_pipeline') == 1)">
+		<include file="$(find fastslam2_0)/launch/fastslam2_0.launch">
+			<arg name="mission_config" value="$(arg mission_config)"/>
+			<arg name="load_map" value="$(arg load_map)"/> 
+		</include>
+	</group>
+
+	<group if="$(eval arg('slam_pipeline') == 2)">
+		<include file="$(find fastslam)/launch/fastslam.launch">
+			<arg name="mission_config" value="$(arg mission_config)"/> 
+		</include>
+	</group>
+</launch>
+

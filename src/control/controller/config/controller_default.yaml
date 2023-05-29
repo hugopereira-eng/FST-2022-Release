@@ -1,0 +1,23 @@
+controller_freq: 100 # controller frequency
+
+# Longitudinal controller params
+accelerating_kp: 0.12
+accelerating_ki: 0.005
+braking_k: 0.5
+further_look_ahead_time: 1.5
+speed_angle: 25
+speed_ref: 7
+max_speed: 13
+min_speed: 6
+
+# Lateral controller params
+steering_k: 2.0
+look_ahead_time: 0.7
+min_lookahead_distance: 5
+speed_ref: 6
+min_speed: 6
+min_steering: -26500.0
+max_steering: 26500.0
+max_steering_change: 0.01
+steering_filter_k: 0.05 # proportional gain of the steering filter
+use_adaptive_control: false

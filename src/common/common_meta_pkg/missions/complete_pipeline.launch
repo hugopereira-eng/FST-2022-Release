@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find perception_meta_pkg)/missions/perception_complete.launch"/>
+  <include file="$(find estimation_meta_pkg)/missions/estimation_complete.launch"/>
+  <include file="$(find control_meta_pkg)/missions/control_complete.launch"/>
+</launch>

@@ -1,0 +1,6 @@
+rospkg
+torch
+torchvision
+numpy
+scikit-build
+opencv-python

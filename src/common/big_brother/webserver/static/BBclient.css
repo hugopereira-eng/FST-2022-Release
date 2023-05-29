@@ -1,0 +1,240 @@
+/* BigBrother webpage stylesheet */
+
+
+/* General */
+
+:root {
+	/* --green: rgb(12, 189, 130); */
+	/* --pink: rgb(235, 81, 132); */
+	--blue: rgb(25,159,217);
+	--red: rgb(237,32,36);
+}
+
+body {
+	background-color: rgb(34, 34, 34);
+	margin-bottom: 1.5rem;
+}
+
+.title {
+	margin-top: 1rem;
+	margin-bottom: -1rem;
+}
+
+.title h1 {
+	font-size: 40px;
+	font-weight: bold;
+	color: var(--red);
+	text-align: center;
+}
+
+.title img {
+	width: auto;
+	max-height: 55px;
+	margin-left: 1rem;
+	display: block;
+}
+
+.title p {
+	text-align: center;
+	font-size: 1.2rem;
+	margin-top: 0.5rem;
+}
+
+
+/* Cards */
+
+.card {
+	background-color: rgb(63, 63, 63);
+	margin-top: 30px;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	overflow: auto;
+	border-radius: 0%;
+	border-bottom: solid 3px rgba(0, 0, 0, 0.7);
+	border-right: solid 3px rgba(0, 0, 0, 0.7);
+}
+
+.ros-card {
+	height: 25rem;
+}
+
+.as-card {
+	height: 25rem;
+}
+
+.img-card {
+	height: 25rem;
+	overflow: scroll;
+}
+
+.rosbag-card {
+	height: 40rem;
+}
+
+.log-card {
+	height: 40rem;
+}
+
+.event-card {
+	height: 25rem;
+}
+
+.map-card {
+	height: 25rem;
+	overflow: scroll;
+}
+
+.card-title {
+	padding-bottom: 15px;
+	color: var(--red);
+}
+
+
+/* Dynamic colour classes */
+
+.dot-grey {
+	height: 0.8rem;
+	width: 0.8rem;
+	background-color: rgb(150, 150, 150);
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.dot-pink {
+	height: 0.8rem;
+	width: 0.8rem;
+	background-color: var(--blue);
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.dot-green {
+	height: 0.8rem;
+	width: 0.8rem;
+	background-color: var(--red);
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.grey {
+	color: rgb(150, 150, 150);
+}
+
+.pink {
+	color: var(--blue);
+}
+
+.green {
+	color: var(--red);
+}
+
+.online {
+	color: rgb(46, 199, 0);
+}
+
+.red {
+	color: red;
+}
+
+.bar-green {
+	background-color: var(--blue);
+}
+
+.bar-red {
+	background-color: rgb(255, 0, 0);
+}
+
+.bar-grey {
+	background-color: rgb(150, 150, 150);
+}
+
+.btn-pink {
+	color: rgb(34, 34, 34);
+	background-color: var(--blue);
+}
+
+
+/* Logging and events */
+
+.log-box {
+	height: 28rem;
+	overflow: auto;
+	margin-bottom: 0.5rem;
+}
+
+.event-box {
+	height: 15rem;
+	overflow: auto;
+	margin-bottom: 0.5rem;
+}
+
+#table-header {
+	border-bottom: 1px solid var(--blue);
+}
+
+.table-hover tbody tr:hover td {
+	color: white;
+}
+
+
+/* Log tag classes */
+
+.Notes {
+	color: rgb(255, 196, 0);
+}
+
+.Logistics {
+	color: rgb(70, 136, 235);
+}
+
+.Material {
+	color: rgb(255, 123, 0);
+}
+
+.Problem {
+	color: rgb(255, 0, 0);
+}
+
+.Run {
+	color: rgb(46, 199, 0);
+}
+
+.Rosbag {
+	color: rgb(156, 64, 241);
+}
+
+.Slack {
+	color: rgb(0, 195, 255);
+}
+
+
+/* Rosbag tool */
+
+.rosbag-topics-box {
+	height: 25rem;
+	overflow: auto;
+	margin-bottom: 1rem;
+}
+
+.rosbag-topic-list {
+	padding-left: 1rem;
+}
+
+.rosbag-topic-item {
+	background-color: rgba(63, 63, 63, 0.5);
+	border: 0rem;
+	padding: 0rem;
+}
+
+
+/* Scroll bar */
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, .5);
+}

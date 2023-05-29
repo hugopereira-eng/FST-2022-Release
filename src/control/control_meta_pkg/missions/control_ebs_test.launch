@@ -1,0 +1,8 @@
+<launch>
+  <arg name="mission_config" default="default"/> 
+  <!-- <include file="$(find path_planner)/launch/path_planner.launch"/> -->
+  <include file="$(find new_planner)/launch/new_planner.launch"/>
+  <include file="$(find controller)/launch/controller.launch">
+    <arg name="mission_config" value="$(arg mission_config)"/> 
+  </include>
+</launch>

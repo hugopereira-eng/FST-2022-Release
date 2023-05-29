@@ -1,0 +1,27 @@
+<launch>
+    <param name="common/mission_selected" type="int" value="0"/> <!-- 0 = ACCELERATION -->
+	
+	<include file="$(find mission_tracker)/launch/mission_tracker.launch">
+		<arg name="mission_config" value="acceleration"/>
+	</include>
+
+	<include file="$(find common_meta_pkg)/missions/tf.launch" /> 
+	
+	<include file="$(find perception_meta_pkg)/missions/perception_complete.launch" />
+
+	<include file="$(find estimation_meta_pkg)/missions/estimation_complete.launch">
+	  <arg name="mission_config" value="default"/>
+		<arg name="load_map" value="false"/>
+	 	<arg name="slam_pipeline" value="0"/> <!-- 0 = GraphSlam, 1 = FastSlam2.0, 2 = FastSlam1.0 -->
+    	<arg name="simul" value="false"/>
+	</include>
+	
+	<include file="$(find control_meta_pkg)/missions/control_complete.launch">
+		<arg name="mission_config" value="acceleration"/>
+		<arg name="launch_path_planner" value="true"/>
+	</include>
+
+	<include file="$(find common_meta_pkg)/missions/record_pipeline.launch"> 
+		<arg name="bag_dir" value="/home/fst10d/rosbags/acceleration"/>
+	</include>
+</launch>

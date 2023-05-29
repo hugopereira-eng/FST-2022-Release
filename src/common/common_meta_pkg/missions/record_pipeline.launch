@@ -1,0 +1,44 @@
+<launch>
+    <arg name="bag_dir" default="/home/fst10d/rosbags/trackdrive"/>
+    <arg name="topics" default="
+    /rosout 
+    /rosout_agg 
+    /tf_static 
+    /tf
+    /velodyne_points 
+    /perception/lidar/clustered_points 
+    /perception/lidar/cluster_centroids 
+    /perception/lidar/vis/cluster_markers 
+    /perception/lidar/vis/cone_markers 
+    /control/path_planner/centerline 
+    /control/controller/control_cmd 
+    /control/controller/steering_actual 
+    /control/controller/vis/point_to_follow 
+    /control/controller/vis/point_ahead 
+    /control/controller/point_to_follow 
+    /estimation/accel_gravity 
+    /estimation/gps_velocity 
+    /estimation/velocity 
+    /estimation/gps_position 
+    /estimation/odom3D 
+    /estimation/wheel_speeds 
+    /estimation/motor_torque 
+    /estimation/state_estimation/velocity 
+    /estimation/state_estimation/position
+    /estimation/slam/landmarks 
+    /estimation/slam/centerline 
+    /estimation/slam/particles 
+    /estimation/slam/odometry 
+    /estimation/slam/cone_detections 
+    /estimation/slam/cone_detections_markers
+    /common/mission_tracker/control_monitoring 
+    /common/mission_tracker/mission_finished 
+    /common/mission_tracker/res_state
+    /common/mission_tracker/lap_counter 
+    /common/can_sniffer/sta_power 
+    /common/can_sniffer/sta_position 
+    /estimation/state_estimation/gps_odom"/>
+
+    <node pkg="rosbag" type="record" name="record_node" output="screen" required="true"
+        args="-o $(arg bag_dir) -b 4096 $(arg topics)"/>
+</launch>

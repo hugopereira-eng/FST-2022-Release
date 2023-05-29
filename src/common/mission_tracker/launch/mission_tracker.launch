@@ -1,0 +1,6 @@
+<launch>
+    <arg name="mission_config" default="trackdrive"/>
+    <node name="mission_tracker" pkg="mission_tracker" type="mission_tracker" output="screen" required="true">
+    	<rosparam command="load" file="$(find mission_tracker)/config/mission_tracker_$(arg mission_config).yaml"/>
+    </node>
+</launch>

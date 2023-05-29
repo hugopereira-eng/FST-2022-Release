@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/software10d/autonomous-system/devel/setup.bash
+source /etc/ros/env.sh
+# export ROS_HOME=$(echo ~aeroless)/.ros
+roslaunch big_brother big_brother.launch &
+big_brother_PID=$!
+wait $big_brother_PID

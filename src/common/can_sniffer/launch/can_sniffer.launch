@@ -1,0 +1,8 @@
+<launch>
+    <arg name="simul" default="false"/>
+    <node name="can_sniffer" pkg="can_sniffer" type="can_sniffer" output="screen">
+        <param name="fcp_json_path" type="str" value="$(find can_sniffer)/include/lib/fst10d.json"/>
+        <param name="simulation" type="bool" value="$(eval simul)"/>
+    </node>
+
+</launch>

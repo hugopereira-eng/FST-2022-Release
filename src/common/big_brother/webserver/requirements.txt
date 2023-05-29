@@ -1,0 +1,6 @@
+flask
+flask-socketio==4.3.2
+websocket-client
+eventlet
+pytz
+pyyaml

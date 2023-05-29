@@ -1,0 +1,8 @@
+<launch>
+    <arg name="no_colorNet" default="0"/> <!-- 0 = Use colorNet, 1 = Don't use colorNet -->
+        <param name="/perception/no_colorNet" type="int" value="$(arg no_colorNet)"/>
+        <node name="lidar_color_classification" pkg="lidar" type="lidar_color_classification_handle.py" output="screen" respawn="true" respawn_delay="1" unless="$(arg no_colorNet)">
+            <param name="thesis_pipeline_weights_path" type="str" value="$(find lidar)/weights/velodyne.pt"/>
+            <param name="darknet_pipeline_weights_path" type="str" value="$(find lidar)/weights/velodyne.pt"/>
+        </node>
+</launch>

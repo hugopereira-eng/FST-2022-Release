@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+  <param name="common/mission_selected" type="int" value="4"/> <!-- 4 = EBS TEST -->
+
+  <include file="$(find mission_tracker)/launch/mission_tracker.launch">
+    <arg name="mission_config" value="ebs_test"/>
+  </include>
+
+  <include file="$(find control_meta_pkg)/missions/control_complete.launch">
+		<arg name="mission_config" value="acceleration"/>
+		<arg name="launch_path_planner" value="true"/>
+	</include>
+
+  <include file="$(find fst_interface)/launch/only_interface.launch"/>
+
+
+</launch>

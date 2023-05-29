@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+
+  <param name="common/mission_selected" type="int" value="0"/> <!-- 0 = ACCELERATION -->
+
+  <include file="$(find mission_tracker)/launch/mission_tracker.launch">
+    <arg name="mission_config" value="acceleration"/>
+  </include>
+
+  <include file="$(find estimation_meta_pkg)/missions/estimation_complete.launch">
+	  <arg name="mission_config" value="acceleration"/>
+		<arg name="load_map" value="false"/>
+	 	<arg name="slam_pipeline" value="0"/>
+    <arg name="simul" value="true"/>
+	</include>
+
+  <include file="$(find control_meta_pkg)/missions/control_complete.launch">
+		<arg name="mission_config" value="acceleration"/>
+		<arg name="launch_path_planner" value="true"/>
+	</include>
+
+  <include file="$(find fst_interface)/launch/only_interface.launch"/>
+
+</launch>

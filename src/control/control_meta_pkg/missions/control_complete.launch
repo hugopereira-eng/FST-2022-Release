@@ -1,0 +1,12 @@
+<launch>
+  <arg name="mission_config" default="default"/>
+  <arg name="launch_path_planner" default="true"/>
+
+  <group if="$(eval arg('launch_path_planner') == true)">
+		<include file="$(find new_planner)/launch/new_planner.launch"/>
+	</group>
+    
+  <include file="$(find controller)/launch/controller.launch">
+    <arg name="mission_config" value="$(arg mission_config)"/> 
+  </include>
+</launch>

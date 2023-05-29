@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="{{ url_for('static', filename='icon.png') }}">
+
+  <title>FST10d</title>
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"> -->
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+  </script> -->
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.css') }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.6.0.slim.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.bundle.js') }}"></script>
+
+  <!-- Socket IO -->
+  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> -->
+  <script type="text/javascript" src="{{ url_for('static', filename='socket.io.js') }}"></script>
+
+  <!-- external CSS file -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='BBclient.css') }}">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row row-cols-1 title">
+      <div class="col-1">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="FST Lisboa">
+      </div>
+      <div class="col-10">
+        <h1>FST10d Car Monitoring</h1>
+      </div>
+      <div class="col-1">
+        <p class="red" id="car-status"><b>Car offline</b></p>
+      </div>
+    </div>
+
+    <!-------------------- line 2 -------------------->
+    <div class="row row-cols-1 row-cols-md-2">
+      
+      <div class="col-md-6">
+
+        <!-------------------- ROS INFO -------------------->
+
+        <div class="ros-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">ROS Info</h5>
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col">
+                <p class="card-text">
+                  <span class="pink"><b>Nodes</b></span><br>
+                  <span id="nodes"></span><br>
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text">
+                  <span class="pink"><b>Topics</b></span><br>
+                  <span id="topics"></span><br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6">
+
+        <!-------------------- AS INFO -------------------->
+
+        <div class="as-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">Autonomous System Info</h5>
+            <div class="row row-cols-1 row-cols-md-4">
+              <div class="col">
+                <p class="card-text">
+                  <span class="pink"><b>Mission info</b></span><br>
+                  &nbsp;<span class="grey" id="mission">-</span>&ensp;mission<br>
+                  <span class="dot-grey" id="finished"></span>&ensp;finished<br>
+                  <br>
+                  <span class="pink"><b>RES state</b></span><br>
+                  <span class="dot-grey" id="res-emergency"></span>&ensp;RES emergency<br>
+                  <span class="dot-grey" id="res-go"></span>&ensp;RES go<br>
+                  <br>
+                  <span class="pink"><b>Lap:&ensp;</b></span><span class="grey" id="lap-counter">0</span><br>
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text">
+                  <span class="pink"><b>Cones</b></span><br>
+                  <span class="grey" id="blue-cones">0</span>&ensp;blue<br>
+                  <span class="grey" id="yellow-cones">0</span>&ensp;yellow<br>
+                  <span class="grey" id="orange-cones">0</span>&ensp;orange<br>
+                  <span class="grey" id="unknown-cones">0</span>&ensp;unknown<br>
+                  <br>
+                  <span class="pink"><b>Control monitoring</b></span><br>
+                  <span class="dot-grey" id="control-on"></span>&ensp;control on<br>
+                  <span class="dot-grey" id="require-braking"></span>&ensp;require braking<br>
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text mb-0">
+                  <span class="pink"><b>Control command</b></span>
+                </p>
+                <p class="card-text mb-0">throttle</p>
+                <div class="progress">
+                  <div class="progress-bar bar-grey" id="throttle" role="progressbar" style="width: 50%;" aria-valuenow="0" aria-valuemin="-1" aria-valuemax="1">0</div>
+                </div>
+                <p class="card-text mb-0">steering</p>
+                <div class="progress">
+                  <div class="progress-bar bar-grey" id="steering" role="progressbar" style="width: 50%;" aria-valuenow="0" aria-valuemin="-1" aria-valuemax="1">0</div>
+                </div>
+                <br>
+                <p class="card-text">
+                  <span class="pink"><b>STA</b></span><br>
+                  <span class="grey" id="sta-pos">0</span>&ensp;position<br>
+                  <span class="grey" id="delta-sta">0</span>&ensp;delta STA<br>
+                  <span class="grey" id="delta-controller">0</span>&ensp;delta controller<br>
+                  <span class="grey" id="delta-demands">0</span>&ensp;delta demands<br>
+                </p>
+              </div>
+              <div class="col">
+                <p class="card-text">
+                  <span class="pink"><b>SLAM</b></span><br>
+                  <span class="dot-grey" id="slam-loop"></span>&ensp;loop closure<br>
+                </p>
+                <p class="card-text">
+                  <span class="pink"><b>Point to follow</b></span><br>
+                  <span class="grey" id="p2f-distance">0</span>&ensp;distance<br>
+                  <span class="grey" id="p2f-speed">0</span>&ensp;speed<br>
+                </p>
+                <p class="card-text">
+                  <span class="pink"><b>Velocity</b></span><br>
+                  <span class="grey" id="vel-x">0</span>&ensp;X<br>
+                  <span class="grey" id="vel-y">0</span>&ensp;Y<br>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-------------------- line 3 -------------------->
+    <div class="row row-cols-1 row-cols-md-2">   
+      <div class="col-md-6">
+
+        <!-------------------- EVENTS -------------------->
+
+        <div class="event-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">Events</h5>
+            <div class="table-responsive">
+
+              <table class="table table-sm table-borderless" id="table-header">
+                <col style="width:10%">
+                <col style="width:70%">
+                <thead>
+                  <tr>
+                    <th class="pink">Time</th>
+                    <th class="pink">Event</th>
+                  </tr>
+                </thead>
+              </table>
+
+              <div class="event-box" id="event-box">
+                <table class="table table-hover table-sm text-white table-borderless">
+                  <col style="width:10%">
+                  <col style="width:90%">
+                  <tbody id="event-table"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <!-------------------- SLAM MAP -------------------->
+        
+        <div class="map-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">SLAM Map</h5>
+            <img class="rounded mx-auto d-block" id="map" src="">
+          </div>
+        </div>
+
+        <!-------------------- PIERRE -------------------->
+
+        <!-- <div class="img-card card text-white"> -->
+          <!-- <img class="card-img" id="image" src=""> -->
+          <!-- <div class="card-img-overlay"> -->
+          <!-- <div class="card-body">
+            <h5 class="card-title">Pierre</h5>
+            <img class="rounded mx-auto d-block" id="image" src="">
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+      
+
+    <!-- <div class="row row-cols-1 row-cols-md-2"> -->
+
+      <!-------------------- ROSBAG -------------------->
+
+      <!-- <div class="col-md-4">
+        <div class="rosbag-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">Rosbag</h5>
+
+            <p class="card-text">
+              <span class="dot-grey" id="rosbag-recording"></span>&ensp;Recording<br><br>
+              <span class="pink"><b>Topics</b></span><br>
+            </p>
+
+            <div class="rosbag-topics-box" id="rosbag-topics-box">
+              <ul class="list-group rosbag-topic-list" id="rosbag-topics-text"></ul>
+            </div>
+            
+            <div class="input-row">
+              <div class="btn-group" role="group" style="width: 100%;">
+                <button class="btn btn-pink" type="button" id="record-button"><b>Record</b></button>
+                <button class="btn btn-pink" type="button" id="stop-button"><b>Stop</b></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-------------------- LOGGING -------------------->
+
+      <!-- <div class="col-md-8">
+        <div class="log-card card text-white">
+          <div class="card-body">
+            <h5 class="card-title">Logging</h5>
+            <div class="table-responsive">
+
+              <table class="table table-sm table-borderless" id="table-header">
+                <col style="width:10%">
+                <col style="width:8%">
+                <col style="width:72%">
+                <col style="width:5%">
+                <col style="width:5%">
+                <thead>
+                  <tr>
+                    <th class="pink">Tag</th>
+                    <th class="pink">Time</th>
+                    <th class="pink">Entry</th>
+                    <th class="pink">Edit</th>
+                    <th class="pink">Delete</th>
+                  </tr>
+                </thead>
+              </table>
+
+              <div class="log-box" id="log-box">
+                <table class="table table-hover table-sm text-white table-borderless">
+                  <col style="width:10%">
+                  <col style="width:8%">
+                  <col style="width:72%">
+                  <col style="width:5%">
+                  <col style="width:5%">
+                  <tbody id="log-table"></tbody>
+                </table>
+              </div>
+
+            </div>
+            
+            <div class="form-row">
+              <div class="input-group">
+                <select class="custom-select input-group-prepend col-1" id="log-tag">
+                  <option value="Notes" selected>Notes</option>
+                  <option value="Logistics">Logistics</option>
+                  <option value="Material">Material</option>
+                  <option value="Problem">Problem</option>
+                  <option value="Run">Run</option>
+                  <option value="Rosbag">Rosbag</option>
+                  <option value="Slack">Slack</option>
+                </select>
+
+                <input type="text" class="form-control" id="log-entry" placeholder="Log entry" aria-describedby="log-button" autocomplete="off">
+
+                <div class="input-group-append">
+                  <div class="input-group-text">
+                    <input type="checkbox" id="slack-checkbox">
+                    <label class="form-check-label" for="slack-checkbox">&ensp;Slack</label>
+                  </div>
+                  <button class="btn btn-pink" type="button" id="log-button"><b>Submit</b></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+
+  </div>
+
+  <!-- external javascript code -->
+  <script type="text/javascript" src="{{ url_for('static', filename='BBclient.js') }}"></script>
+
+</body>
+</html>

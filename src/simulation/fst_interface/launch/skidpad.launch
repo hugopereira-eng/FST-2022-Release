@@ -1,0 +1,15 @@
+<launch>
+
+	<!-- only here because AMZ also uses this in their skeleton -->
+	<!-- not deleted because it might break something. Needs to be checked. -->
+    <param name="use_sim_time" value="true"/>
+
+    <arg name="fssim_config" default="$(find fst_interface)/fssim_config/simulations/skidpad.yaml"/>
+
+    <include file="$(find fssim)/launch/start.launch">
+        <arg name="fssim_config" value="$(arg fssim_config)"/>
+    </include>
+
+    <include file="$(find fst_interface)/launch/rviz.launch"/>
+
+</launch>

@@ -1,0 +1,8 @@
+<launch>
+	<!-- only here because AMZ also uses this in their skeleton -->
+	<!-- not deleted beceause it might break something. Needs to be checked. -->
+    <param name="use_sim_time" value="true" />
+    
+    <node name="fst_interface" pkg="fst_interface" type="fst_interface" output="screen">
+    </node>
+</launch>

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+source ~/software10d/autonomous-system/devel/setup.bash
+source /etc/ros/env.sh
+source ~/realsense/devel/setup.bash
+# export ROS_HOME=$(echo ~aeroless)/.ros
+roslaunch realsense2_camera rs_t265.launch &
+intel_camera_PID=$!
+wait $intel_camera_PID

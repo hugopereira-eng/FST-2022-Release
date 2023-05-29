@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source ~/software10d/autonomous-system/devel/setup.bash
+source /etc/ros/env.sh
+# export ROS_HOME=$(echo ~aeroless)/.ros
+roslaunch arena_camera arena_camera_node.launch &
+arena_camera_PID=$!
+wait $arena_camera_PID

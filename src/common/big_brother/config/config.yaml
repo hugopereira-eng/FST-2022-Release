@@ -1,0 +1,105 @@
+server_ip: 192.168.200.231
+# server_ip: localhost
+
+car_ip: 192.168.200.102
+# car_ip: localhost
+
+slack: False
+slack_channel: https://hooks.slack.com/services/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       # dv_testing
+# slack_channel: https://hooks.slack.com/services/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       # comunicacao_estoril
+
+track_name: Estoril
+
+nodes:
+  - launcher
+  - can_sniffer
+  - mission_tracker
+  # - os_cloud_node
+  - os_sensor
+  - lidar_cone_detector
+  - path_planner
+  - new_planner
+  - graphslam
+  - controller
+  - record_node
+  - record    # must be last and never deleted!
+
+topics:
+  - /velodyne_points
+  # - /os_cloud_node/points
+  # - /perception/lidar/cluster_centroids
+  - /perception/lidar/clustered_points
+  - /control/path_planner/centerline 
+  - /control/controller/control_cmd
+  - /estimation/slam/cone_detections
+  - /estimation/wheel_speeds
+  - /estimation/motor_torque
+  - /estimation/gps_velocity
+  - /estimation/gps_position
+  - /estimation/odom3D
+
+frequency_limits:
+  /velodyne_points: 18
+  /estimation/gps_velocity: 190
+  /estimation/wheel_speeds: 190
+  /estimation/motor_torque: 190
+  /estimation/gps_position: 190
+  /estimation/odom3D: 190 
+
+record:
+  - /rosout
+  - /rosout_agg
+  - /tf_static
+  - /tf
+  - /arena_camera_node/image_raw
+  - /arena_camera_node_1/image_raw
+  - /arena_camera_node_2/image_raw
+  # - /os_cloud_node/points
+  # - /os_cloud_node/imu
+  - /velodyne_points
+  - /perception/lidar/clustered_points
+  - /perception/lidar/cluster_centroids
+  - /perception/lidar/vis/cluster_markers
+  - /perception/lidar/vis/cone_markers
+  - /perception/sensor_fusion/coNet_proposals
+  - /perception/sensor_fusion/colorNet_proposals
+  - /perception/sensor_fusion/coNet_cone_detections
+  - /perception/lidar/colorNet_cone_detections
+  - /perception/data_association/cone_detections
+  - /perception/data_association/cone_detections_markers
+  - /perception/data_association/lidar_detections_markers
+  - /perception/data_association/camera_detections_markers
+  - /perception/data_association/cone_info_markers
+  # - /perception/darknet_ros/bounding_boxes
+  # - /perception/darknet_ros/detection_image
+  - /control/svm/centerline
+  - /control/svm/vis/svm_image
+  - /control/speed_planner/velocity_reference_path_planner
+  - /control/speed_planner/velocity_reference_slam
+  - /control/controller/control_cmd
+  - /control/controller/steering_actual
+  - /control/controller/vis/point_to_follow
+  - /control/controller/vis/point_ahead
+  - /control/controller/point_to_follow
+  - /estimation/accel_gravity
+  - /estimation/gps_velocity
+  - /estimation/velocity
+  - /estimation/gps_position
+  - /estimation/odom3D
+  - /estimation/wheel_speeds
+  - /estimation/motor_torque
+  - /estimation/state_estimation/velocity
+  - /estimation/state_estimation/position
+  - /estimation/slam/landmarks
+  - /estimation/slam/centerline
+  - /estimation/slam/particles
+  - /estimation/slam/odometry
+  - /estimation/slam/cone_detections
+  - /common/mission_tracker/control_monitoring
+  - /common/mission_tracker/mission_finished
+  - /common/mission_tracker/lap_counter
+  - /common/can_sniffer/sta_power
+  - /common/can_sniffer/sta_position
+  - /common/pierre/visualization
+  - /common/res_state
+  - /missionTopic

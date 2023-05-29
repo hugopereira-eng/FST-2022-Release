@@ -1,0 +1,26 @@
+#rosparam for passthrough filtering
+passthrough_filter_min_x: 0
+passthrough_filter_max_x: 20.0
+passthrough_filter_min_y: -10
+passthrough_filter_max_y: 10
+passthrough_filter_min_z: -20.0
+passthrough_filter_max_z: 1
+passthrough_filter_distance_filter: 1
+
+#rosparam for ransac algorithm
+ransac_max_iterations: 10
+ransac_distance_threshold: 0.05
+
+#rosparam for euclidian clustering algorithm
+cluster_tolerance: 0.65
+cluster_min_size: 1
+cluster_max_size: 400
+
+#rosparam for cone reconstruction
+reconstruction_cylinder_radius: 0.2
+reconstruction_cylinder_height: 0.3
+
+#rosparam for cone identification
+identification_vertical_resolution: 1.01
+identification_cylinder_radius: 0.3
+identification_cylinder_height: 0.3

@@ -1,0 +1,5 @@
+<launch>
+    <node name="svm_python" pkg="svm" type="svm_path_planner_handle.py" output="screen" respawn="true" respawn_delay="1">
+    </node>
+
+</launch>

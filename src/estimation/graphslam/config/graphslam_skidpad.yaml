@@ -1,0 +1,26 @@
+mapping:
+  associationThreshold: 10.0        # probability above which an observation is considered to be known landmark
+  associationRange: 10.0
+  startingHeadingDeviation: 10.0    # uncertainty associted to the starting heading
+  observationIncrement: 1           # when a landmark is observed increments this value
+  loopClosureFactor: 0.5            # percentage of the landmarks (missed + seen) that returned
+  loopClosureRange: 8
+  deleteLandmarkThreshold: 40       #counter of observations limit where a landmark has to be seen
+
+localization:
+  initialPosition:
+    x: -16.5
+    y: 0.0
+    theta: 0.0
+
+noise:
+  obs:
+    d: 0.4                  # range uncertainty in meters
+    theta: 3.5              # bearing uncertainty in degrees
+  odom:
+    x: 0.01                # x uncertainty in meters
+    y: 0.05                # y uncertainty in meters
+    theta: 0.1             # yaw uncertainty in meters
+
+mapName: "skidpad"   
+daMethod: "ML"                  

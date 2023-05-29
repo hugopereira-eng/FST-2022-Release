@@ -1,0 +1,8 @@
+
+<launch>
+    <arg name="mission_config" default="trackdrive"/>
+    <node name="fastslam" pkg="fastslam" type="fastslam" output="screen" respawn="true" respawn_delay="3">
+		<rosparam command="load" file="$(find fastslam)/config/fastslam_$(arg mission_config).yaml"/>
+    </node>
+    <rosparam command="load" file="$(find graphslam)/maps/$(arg mission_config).yaml"/> 
+</launch>

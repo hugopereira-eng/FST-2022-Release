@@ -1,0 +1,10 @@
+accelerating_k: 0.03
+braking_k: 0.06
+steering_k: 2
+look_ahead_time: 1.5
+min_lookahead_distance: 5
+speed_ref: 25
+min_speed: 7
+min_steering: -26500.0
+max_steering: 26500.0
+max_steering_change: 0.8
